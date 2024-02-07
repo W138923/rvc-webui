@@ -1,0 +1,52 @@
+{
+    "model": "Tacotron2",
+    "run_name": "model_name",
+    "run_description": "tacotron2 model",
+  
+    "audio": {
+      "num_mels": 80,
+      "num_freq": 1025,
+      "sample_rate": 22050,
+      "frame_length_ms": 50,
+      "frame_shift_ms": 12.5,
+      "preemphasis": 0.98,
+      "min_level_db": -100,
+      "ref_level_db": 20,
+      "power": 1.5,
+      "signal_norm": true,
+      "symmetric_norm": false,
+      "max_norm": 4.0,
+      "mel_fmin": 0.0,
+      "mel_fmax": 8000.0,
+      "do_trim_silence": true,
+      "trim_db": 60,
+      "griffin_lim_iters": 60
+    },
+  
+    "distributed": {
+      "backend": "nccl",
+      "url": "tcp://localhost:54321"
+    },
+  
+    "batch_size": 32,
+    "eval_batch_size":16,
+    "r": 5,
+    "text_cleaner": "english_cleaners",
+  
+    "optimizer": "adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.000001,
+    "grad_clip": 1.0,
+    "dropout": 0.5,
+    "zoneout": 0.1,
+  
+    "decoder_loss_alpha": 0.5,
+    "postnet_loss_alpha": 0.25,
+    "stopnet_loss_alpha": 0.5,
+    "postnet_diff_spec_alpha": 0.1,
+  
+    "scheduler": "ReduceLROnPlateau",
+    "min_lr": 0.00001,
+    "scheduler_patience": 10
+  }
+  
